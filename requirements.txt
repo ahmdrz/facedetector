@@ -1,0 +1,6 @@
+dlib
+scikit-image
+imutils
+flask
+numpy
+imageio
