@@ -1,13 +1,16 @@
-from flask import Flask
-from flask import request
-from flask import jsonify
-
-import logging
-import tempfile
-import shutil
-import os
-import time
 from face_detection import face_detector, image_reader
+import time
+import os
+import shutil
+import tempfile
+import logging
+from flask import jsonify
+from flask import request
+from flask import Flask
+import dlib
+
+print "dlib version: {}".format(dlib.__version__)
+
 
 app = Flask(__name__)
 
@@ -35,7 +38,8 @@ def detect_human_faces():
         if 'image' in request.files:
             f = request.files['image']
             unix_time = int(time.time())
-            path = os.path.join(temporary_directory, '{}_{}'.format(unix_time, f.filename))
+            path = os.path.join(temporary_directory,
+                                '{}_{}'.format(unix_time, f.filename))
             f.save(path)
 
             image = image_reader.read_image(path, width=400)
@@ -60,7 +64,7 @@ if __name__ == "__main__":
 
     print "Starting server on http://localhost:5000"
     print "Serving ...",
-    app.run()
+    app.run(host='0.0.0.0')
     print "Finished !"
     print "Removing temporary directory ...",
     shutil.rmtree(temporary_directory)

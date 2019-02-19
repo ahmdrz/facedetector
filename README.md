@@ -4,11 +4,21 @@ Simple Flask application to detect faces, gender and their landmarks.
 ---
 ![Sample image](https://raw.githubusercontent.com/ahmdrz/face_and_flask/master/resources/image.jpg?raw=true)
 
+### Docker
+
+```bash
+$ docker build -t facedetector:1.0 .
+$ docker run -p 5000:5000 facedetector:1.0
+$
+$ # Example:
+$ curl "localhost:5000/detect?url=https://pixel.nymag.com/imgs/daily/vulture/2018/09/04/04-eminem-2.w700.h700.jpg"
+```
+
 ### Dependency
 
 First of all , clone this repository using `git clone https://github.com/ahmdrz/face_and_flask`.
 
-To install all of dependencies run `sudo pip install -r requirements.txt` , after installing python packages , you have to download pre-trained dlib models (abote ~:
+To install all of dependencies run `sudo pip install -r requirements.txt` , after installing python packages , you have to download pre-trained dlib models.
 
 ```
   cd face_detection/data

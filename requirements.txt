@@ -1,4 +1,5 @@
-dlib
+dlib==19.7
+opencv-contrib-python
 scikit-image
 imutils
 flask

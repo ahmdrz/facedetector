@@ -101,3 +101,5 @@ ENV/
 .mypy_cache/
 
 *.dat
+.fandogh
+fandogh.yml
