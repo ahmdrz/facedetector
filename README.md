@@ -11,13 +11,45 @@ $ docker run -p 5000:5000 ahmdrz/facedetector:latest
 #### Sample
 
 **Request**
+
 ```bash
 $ curl "localhost:5000/detect?gender=on&url=https://pixel.nymag.com/imgs/daily/vulture/2018/09/04/04-eminem-2.w700.h700.jpg
 ```
 
 **Response**
+
 ```json
-{"result":[{"box":[0.3375,0.115,0.2275,0.2275],"gender":"male","index":0.0,"score":0.43865353245867444}],"status":"ok"}
+{
+  "result": [
+    {
+      "box": [
+        0.3375,
+        0.115,
+        0.2275,
+        0.2275
+      ],
+      "gender": "male",
+      "index": 0,
+      "landmarks": [
+        [
+          0.36,
+          0.1875
+        ],
+        [
+          0.3625,
+          0.21
+        ],
+        [
+          0.365,
+          0.2325
+        ],
+        ... // there are 68 points...
+      ],
+      "score": 0.43
+    }
+  ],
+  "status": "ok"
+}
 ```
 
 ### Dependencies
@@ -47,27 +79,6 @@ Curl examples :
 $  curl "localhost:5000/detect?url=<picture url>"
 $  curl -F "image=@<picture file path>" "localhost:5000/detect?landmarks=on"
 $  curl -F "image=@<picture file path>" "localhost:5000/detect?gender=on"
-```
-
-Output example :
-
-```json
-{
-  "result": [
-    {
-      "box": [
-        0.3775, 
-        0.5066666666666667, 
-        0.2725, 
-        0.36
-      ], 
-      "gender": "male",
-      "index": 0.0, 
-      "score": 2.4785936512483473
-    }
-  ], 
-  "status": "ok"
-}
 ```
 
 **Note**: All of the cordinates in this application is based of `image width` and `image height`.
