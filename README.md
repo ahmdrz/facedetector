@@ -42,8 +42,7 @@ $ curl "localhost:5000/detect?gender=on&landmarks=on&url=https://pixel.nymag.com
         [
           0.365,
           0.2325
-        ]
-        // ... there are 68 points of landmarks.
+        ]        
       ],
       "score": 0.43
     }
