@@ -42,8 +42,7 @@ $ curl "localhost:5000/detect?gender=on&url=https://pixel.nymag.com/imgs/daily/v
         [
           0.365,
           0.2325
-        ],
-        ... // there are 68 points...
+        ]
       ],
       "score": 0.43
     }
@@ -51,6 +50,8 @@ $ curl "localhost:5000/detect?gender=on&url=https://pixel.nymag.com/imgs/daily/v
   "status": "ok"
 }
 ```
+
+**NOTE** Landmarks are 68 points.
 
 ### Dependencies
 
