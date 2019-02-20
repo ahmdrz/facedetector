@@ -20,7 +20,7 @@ $ curl "localhost:5000/detect?gender=on&url=https://pixel.nymag.com/imgs/daily/v
 {"result":[{"box":[0.3375,0.115,0.2275,0.2275],"gender":"male","index":0.0,"score":0.43865353245867444}],"status":"ok"}
 ```
 
-### Dependency
+### Dependencies
 
 First of all , clone this repository using `git clone https://github.com/ahmdrz/facedetector`.
 
@@ -30,10 +30,6 @@ To install all of dependencies run `sudo pip install -r requirements.txt` , afte
   cd face_detection/data
   ./models.sh
 ```
-
-### Run server
-
-This program used Flask as WSGI and router , to serve run `python server.py`.
 
 ### How to use in clients ?
 
