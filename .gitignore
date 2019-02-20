@@ -103,3 +103,4 @@ ENV/
 *.dat
 .fandogh
 fandogh.yml
+.vscode

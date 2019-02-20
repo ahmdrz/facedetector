@@ -1,6 +1,9 @@
 FROM ubuntu:latest
 
-RUN apt-get update && apt-get install -y python-pip wget bzip2 python-dev cmake zip libboost-all-dev
+RUN apt-get update && apt-get install -y \
+    python-pip wget bzip2 python-dev cmake \
+    zip libboost-all-dev gunicorn \
+    libsm6 libxext6 libfontconfig1 libxrender1
 
 COPY . /app
 
@@ -10,8 +13,6 @@ RUN chmod +x models.sh && ./models.sh
 WORKDIR /app
 RUN pip install -r requirements.txt
 
-RUN  apt-get install -y libsm6 libxext6 libfontconfig1 libxrender1
-
 EXPOSE 5000
 
-CMD [ "python", "server.py" ]
+CMD [ "gunicorn", "-b 0.0.0.0:5000", "server:app" ]

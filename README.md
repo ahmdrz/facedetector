@@ -1,22 +1,28 @@
-# Face and Flask
-Simple Flask application to detect faces, gender and their landmarks.
-
----
-![Sample image](https://raw.githubusercontent.com/ahmdrz/face_and_flask/master/resources/image.jpg?raw=true)
+# Face Detector
+Simple Flask and docker-ready application as a server to detect faces, genders and their landmarks.
 
 ### Docker
 
 ```bash
-$ docker build -t facedetector:1.0 .
-$ docker run -p 5000:5000 facedetector:1.0
-$
-$ # Example:
-$ curl "localhost:5000/detect?url=https://pixel.nymag.com/imgs/daily/vulture/2018/09/04/04-eminem-2.w700.h700.jpg"
+$ docker pull ahmdrz/facedetector:latest
+$ docker run -p 5000:5000 ahmdrz/facedetector:latest
+```
+
+#### Sample
+
+**Request**
+```bash
+$ curl "localhost:5000/detect?gender=on&url=https://pixel.nymag.com/imgs/daily/vulture/2018/09/04/04-eminem-2.w700.h700.jpg
+```
+
+**Response**
+```json
+{"result":[{"box":[0.3375,0.115,0.2275,0.2275],"gender":"male","index":0.0,"score":0.43865353245867444}],"status":"ok"}
 ```
 
 ### Dependency
 
-First of all , clone this repository using `git clone https://github.com/ahmdrz/face_and_flask`.
+First of all , clone this repository using `git clone https://github.com/ahmdrz/facedetector`.
 
 To install all of dependencies run `sudo pip install -r requirements.txt` , after installing python packages , you have to download pre-trained dlib models.
 
@@ -35,22 +41,16 @@ See `example.py` for details.
 
 This small application has only one route , `/detect`.
 
-Optional query parameters is `landmarks` and `gender`. Use `landmarks=on` for detect 68 point of face landmarks. Use `gender=on` for predict face gender.
+Optional query parameters is `landmarks` and `gender`. Use `landmarks=on` to detect 68 point of face landmarks. Use `gender=on` to predict face gender.
 
 You can use `url` query parameter.
 
 Curl examples :
 
 ```bash
-  curl "localhost:5000/detect?url=https://raw.githubusercontent.com/ahmdrz/face_and_flask/master/resources/sample.jpg"
-```
-
-```bash
-  curl -F "image=@resources/sample.jpg" "localhost:5000/detect"
-```
-
-```bash
-  curl -F "image=@resources/sample.jpg" "localhost:5000/detect?gender=on"
+$  curl "localhost:5000/detect?url=<picture url>"
+$  curl -F "image=@<picture file path>" "localhost:5000/detect?landmarks=on"
+$  curl -F "image=@<picture file path>" "localhost:5000/detect?gender=on"
 ```
 
 Output example :
@@ -74,10 +74,10 @@ Output example :
 }
 ```
 
-**Note**: all of cordinates in this application is based of `image width` and `image height`.
+**Note**: All of the cordinates in this application is based of `image width` and `image height`.
 
+#### Keywords
 
-#### TODO:
-
-1. Create `/train` and `/guess` to train faces for face recognizer.
-2. Use config file or command line arguments to modify server settings such as `Flask's listening port`.
+1. Docker face detection
+2. Docker face gender detector
+3. Docker face landmarks
