@@ -1,5 +1,5 @@
 # Face Detector
-Simple Flask and docker-ready application as a server to detect faces, genders and their landmarks.
+A Simple Flask and docker-ready application that works as a server to detect faces, genders and their landmarks.
 
 ### Docker
 
@@ -13,7 +13,7 @@ $ docker run -p 5000:5000 ahmdrz/facedetector:latest
 **Request**
 
 ```bash
-$ curl "localhost:5000/detect?gender=on&url=https://pixel.nymag.com/imgs/daily/vulture/2018/09/04/04-eminem-2.w700.h700.jpg
+$ curl "localhost:5000/detect?gender=on&landmarks=on&url=https://pixel.nymag.com/imgs/daily/vulture/2018/09/04/04-eminem-2.w700.h700.jpg
 ```
 
 **Response**
@@ -87,6 +87,7 @@ $  curl -F "image=@<picture file path>" "localhost:5000/detect?gender=on"
 
 #### Keywords
 
+0. Face/Gender/Landmarks dectection
 1. Docker face detection
 2. Docker face gender detector
 3. Docker face landmarks
